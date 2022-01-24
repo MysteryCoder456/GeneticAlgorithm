@@ -7,7 +7,7 @@ from game.ship_group import ShipGroup
 WIN_SIZE = Vector2(1204, 820)
 FPS = 60
 GENERATION_SIZE = 20
-GENERATION_TIME = 10  # sec
+GENERATION_TIME = 8  # sec
 START_POSITION = Vector2(50, 50)
 TARGET = Vector2(WIN_SIZE.x - 50, WIN_SIZE.y - 50)
 

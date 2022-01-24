@@ -10,7 +10,7 @@ class ShipGroup(pygame.sprite.Group):
         self.starting_pos = starting_pos
         self.target = target
         self.gene_pool: list[list] = []
-        self.fitness_threshold = 4000000
+        self.fitness_threshold = 2000
         self.mutation_scale = 5
         self.generation_number = 1
         random.seed()
@@ -19,8 +19,7 @@ class ShipGroup(pygame.sprite.Group):
         for ship in self:
             ship_pos: Vector2 = ship.pos  # just for type hinting
             fitness = round(
-                self.fitness_threshold
-                / ship_pos.distance_squared_to(self.target)
+                self.fitness_threshold / ship_pos.distance_to(self.target)
             )
             for _ in range(fitness):
                 self.gene_pool.append(ship.dna)
