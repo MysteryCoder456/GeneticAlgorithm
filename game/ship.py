@@ -1,5 +1,5 @@
 import pathlib
-from random import random, seed, randint
+from random import random, seed
 import pygame
 from pygame import Vector2
 

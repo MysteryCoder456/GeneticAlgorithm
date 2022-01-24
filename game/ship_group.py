@@ -12,6 +12,7 @@ class ShipGroup(pygame.sprite.Group):
         self.gene_pool: list[list] = []
         self.fitness_threshold = 4000000
         self.mutation_scale = 5
+        self.generation_number = 1
         random.seed()
 
     def gather_dna(self):
@@ -43,6 +44,7 @@ class ShipGroup(pygame.sprite.Group):
             self.add(new_ship)
 
         self.gene_pool = []
+        self.generation_number += 1
 
     def update_dna(self):
         for sprite in self:

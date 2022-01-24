@@ -25,11 +25,13 @@ def main():
     ship_group = ShipGroup(
         *[Ship(START_POSITION.copy()) for _ in range(GENERATION_SIZE)],
         starting_pos=START_POSITION,
-        target=TARGET
+        target=TARGET,
     )
     vel_update_interval = int(GENERATION_TIME / DNA_LENGTH * 1000)  # ms
     pygame.time.set_timer(UPDATE_VELOCITY_EVENT, vel_update_interval)
     pygame.time.set_timer(NEXT_GENERATION_EVENT, GENERATION_TIME * 1000)
+
+    arial_font = pygame.font.SysFont("Arial", 30)
 
     while True:
         dt = clock.tick(FPS) / 1000
@@ -51,5 +53,13 @@ def main():
 
         ship_group.render(win)
         pygame.draw.circle(win, pygame.Color("red"), TARGET, 20)
+
+        generation_text = arial_font.render(
+            f"Gen {ship_group.generation_number}",
+            False,
+            pygame.Color("white"),
+            pygame.Color("black"),
+        )
+        win.blit(generation_text, (20, WIN_SIZE.y - 50))
 
         pygame.display.flip()
