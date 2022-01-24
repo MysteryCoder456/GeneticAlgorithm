@@ -19,6 +19,7 @@ class Ship(pygame.sprite.Sprite):
         self.angle = self.get_current_dna()
 
         self.image = pygame.image.load(SPRITE_PATH)
+        self.rect = self.image.get_rect()
         super().__init__()
 
     def form_dna(self, dna: list[Vector2]) -> list[float]:
@@ -51,4 +52,5 @@ class Ship(pygame.sprite.Sprite):
         rotated_image = pygame.transform.rotate(
             self.image, (self.angle + 90) * -1
         )
+        self.rect = rotated_image.get_rect()
         win.blit(rotated_image, self.pos)
