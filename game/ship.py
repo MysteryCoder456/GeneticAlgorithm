@@ -1,5 +1,5 @@
 import pathlib
-from random import random
+from random import random, seed
 import pygame
 from pygame.math import Vector2
 
@@ -12,7 +12,7 @@ class Ship(pygame.sprite.Sprite):
         self.pos = start_pos
         self.vel = Vector2()
         self.speed: float = 100
-        self.turn_speed: float = 10
+        self.turn_speed: float = 20
 
         self.dna = self.form_dna(dna)
         self.current_dna_index = 0
@@ -22,7 +22,8 @@ class Ship(pygame.sprite.Sprite):
         super().__init__()
 
     def form_dna(self, dna: list[Vector2]) -> list[float]:
-        dna_list = dna
+        seed()
+        dna_list = dna.copy()
 
         while len(dna_list) < DNA_LENGTH:
             dna_piece = (random() * 2 - 1) * self.turn_speed

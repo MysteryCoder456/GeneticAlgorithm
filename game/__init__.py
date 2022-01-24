@@ -6,7 +6,7 @@ from game.ship_group import ShipGroup
 
 WIN_SIZE = Vector2(1204, 820)
 FPS = 60
-GENERATION_SIZE = 5
+GENERATION_SIZE = 20
 GENERATION_TIME = 15  # sec
 START_POSITION = Vector2(150, WIN_SIZE.y - 150)
 
@@ -21,7 +21,7 @@ def main():
     pygame.display.set_caption("Genetic Algo Demo", "???")
 
     ship_group = ShipGroup(
-        *[Ship(START_POSITION) for _ in range(GENERATION_SIZE)]
+        *[Ship(START_POSITION.copy()) for _ in range(GENERATION_SIZE)]
     )
     vel_update_interval = int(GENERATION_TIME / DNA_LENGTH * 1000)  # ms
     pygame.time.set_timer(UPDATE_VEL_EVENT, vel_update_interval)
