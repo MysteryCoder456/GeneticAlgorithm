@@ -11,7 +11,7 @@ class ShipGroup(pygame.sprite.Group):
         self.target = target
         self.gene_pool: list[list] = []
         self.fitness_threshold = 2000
-        self.mutation_scale = 5
+        self.mutation_scale = 7
         self.generation_number = 1
         random.seed()
 
