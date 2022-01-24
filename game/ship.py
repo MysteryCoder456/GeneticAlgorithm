@@ -1,7 +1,7 @@
 import pathlib
-from random import random, seed
+from random import random, seed, randint
 import pygame
-from pygame.math import Vector2
+from pygame import Vector2
 
 DNA_LENGTH = 250
 SPRITE_PATH = pathlib.Path(__file__).parent / "assets" / "ship.png"
@@ -11,8 +11,8 @@ class Ship(pygame.sprite.Sprite):
     def __init__(self, start_pos: Vector2, dna: list[float] = []):
         self.pos = start_pos
         self.vel = Vector2()
-        self.speed: float = 100
-        self.turn_speed: float = 20
+        self.speed = 100
+        self.turn_speed = 5
 
         self.dna = self.form_dna(dna)
         self.current_dna_index = 0
@@ -41,7 +41,7 @@ class Ship(pygame.sprite.Sprite):
         self.current_dna_index = min(
             self.current_dna_index + 1, DNA_LENGTH - 1
         )
-        self.angle = self.get_current_dna()
+        self.angle += self.get_current_dna()
 
     def update(self, dt: float):
         self.vel.from_polar((self.speed, self.angle))
