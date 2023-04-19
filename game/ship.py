@@ -12,7 +12,7 @@ class Ship(pygame.sprite.Sprite):
         self.pos = start_pos
         self.vel = Vector2()
         self.speed = 100
-        self.turn_speed = 5
+        self.turn_speed = 8
 
         self.dna = self.form_dna(dna)
         self.current_dna_index = 0
@@ -25,6 +25,9 @@ class Ship(pygame.sprite.Sprite):
     def form_dna(self, dna: list[Vector2]) -> list[float]:
         seed()
         dna_list = dna.copy()
+
+        if not dna_list:
+            dna_list.append(30)
 
         while len(dna_list) < DNA_LENGTH:
             dna_piece = (random() * 2 - 1) * self.turn_speed

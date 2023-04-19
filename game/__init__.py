@@ -9,8 +9,8 @@ from game.obstacle import Obstacle
 
 WIN_SIZE = Vector2(1204, 820)
 FPS = 60
-GENERATION_SIZE = 20
-GENERATION_TIME = 13  # sec
+GENERATION_SIZE = 40
+GENERATION_TIME = 12  # sec
 START_POSITION = Vector2(50, 50)
 TARGET = Vector2(WIN_SIZE.x - 50, WIN_SIZE.y - 50)
 
@@ -52,7 +52,7 @@ def main():
                 ),
                 random() + 0.5,
             )
-            for _ in range(randint(5, 7))
+            for _ in range(randint(8, 10))
         ]
     )
 
